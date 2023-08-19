@@ -1,5 +1,6 @@
 import express, { Request, Response } from "express";
 import { body, validationResult } from "express-validator";
+import jwt from "jsonwebtoken";
 import { RequestValidationError } from "../errors/request-validation-error";
 // import { DatabaseConnectionError } from "../errors/database-connection-error";
 import { User } from "../models/user";
@@ -27,12 +28,26 @@ router.post(
 
     const existingUser = await User.findOne({ email });
 
-    if (existingUser) {  
-      throw new BadRequestError('Email in use1')
+    if (existingUser) {
+      throw new BadRequestError("Email in use1");
     }
 
     const user = User.build({ email, password });
     await user.save();
+
+    //Generate JWT
+    const userJwt = jwt.sign(
+      {
+        id: user.id,
+        email: user.email,
+      },
+      "asdf"
+    );
+
+    //Store it on session object : (cookieSession library is going to take this object, serialize it & send it back to the user's browser)
+    req.session = {
+      jwt: userJwt,
+    };
 
     res.status(201).send(user);
   }
