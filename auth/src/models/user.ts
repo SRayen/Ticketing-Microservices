@@ -18,16 +18,29 @@ interface UserDoc extends mongoose.Document {
   password: string;
 }
 
-const userSchema = new mongoose.Schema({
-  email: {
-    type: String,
-    required: true,
+const userSchema = new mongoose.Schema(
+  {
+    email: {
+      type: String,
+      required: true,
+    },
+    password: {
+      type: String,
+      required: true,
+    },
   },
-  password: {
-    type: String,
-    required: true,
-  },
-});
+
+  {
+    toJSON: {
+      transform(doc, ret) {
+        ret.id = ret._id;
+        delete ret._id;
+        delete ret.password;
+        delete ret.__v;
+      }
+    }
+  }
+);
 
 //done ~ await
 //RQ: the use of function (not arrow fct is important) => to use 'this' refer t o the user document
@@ -37,7 +50,7 @@ userSchema.pre("save", async function (done) {
     const hashed = await Password.toHash(this.password);
     this.set("password", hashed);
   }
-  done()
+  done();
 });
 
 //Add a function to a model in mongoose   (describes a single user)
