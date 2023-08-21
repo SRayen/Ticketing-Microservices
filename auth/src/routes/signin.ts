@@ -1,6 +1,11 @@
+import jwt from "jsonwebtoken";
 import express, { Request, Response } from "express";
 import { body } from "express-validator";
 import { validateRequest } from "../middlewares/validate-request";
+import { User } from "../models/user";
+import { BadRequestError } from "../errors/bad-request-errors";
+import { Password } from "../services/password";
+
 
 const router = express.Router();
 
@@ -14,8 +19,32 @@ router.post(
       .withMessage("You must supply a password"),
   ],
   validateRequest,
-  (req: Request, res: Response) => {
+  async (req: Request, res: Response) => {
+    const { email, password } = req.body;
+    const existingUser = await User.findOne({ email });
+    if (!existingUser) {
+      throw new BadRequestError("Invalid credentials");
+    }
+    const passwordsMatch = Password.compare(existingUser.password, password);
+    if (!passwordsMatch) {
+      throw new BadRequestError("Invalid Credentials");
+    }
 
+    //Generate JWT
+    const userJwt = jwt.sign(
+      {
+        id: existingUser.id,
+        email: existingUser.email,
+      },
+      process.env.JWT_KEY! //'!' : to tell TS: 'we have checked this thing (in index.ts) : (env is defined)
+    );
+
+    //Store it on session object : (cookieSession library is going to take this object, serialize it & send it back to the user's browser)
+    req.session = {
+      jwt: userJwt,
+    };
+
+    res.status(201).send(existingUser);
   }
 );
 
