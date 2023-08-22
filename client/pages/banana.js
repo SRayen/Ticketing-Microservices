@@ -1,9 +1,14 @@
-import React from 'react'
+import React from "react";
 
 const banana = () => {
   return (
-    <div>banana 12345</div>
-  )
-}
+    <>
+      <h1>Test bootstrap</h1>
+      <button type="button" class="btn btn-primary">
+        Primary
+      </button>
+    </>
+  );
+};
 
-export default banana 
+export default banana;
