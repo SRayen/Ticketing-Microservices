@@ -1,6 +1,3 @@
-//This file will wrap the running file
-//This file is Wrapper around the component that we're trying to show on the screen.
-
 import "bootstrap/dist/css/bootstrap.css";
 import buildClient from "../api/build-client";
 import Header from "../components/header";
@@ -24,7 +21,7 @@ AppComponent.getInitialProps = async (appContext) => {
   let pageProps = {};
   //To prevent the problem in case where getInitialProps is not defined in some components
   if (appContext.Component.getInitialProps) {
-    //manually invoke other getInitialProps:
+    //manually invoke other getInitialProps (LandingPage in our case (index)):
     pageProps = await appContext.Component.getInitialProps(appContext.ctx);
   }
   return {
@@ -32,5 +29,4 @@ AppComponent.getInitialProps = async (appContext) => {
     ...data, //it contains currentUser
   };
 };
-
 export default AppComponent;

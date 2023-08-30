@@ -17,7 +17,6 @@ export default ({ currentUser }) => {
         </li>
       );
     });
-  console.log("options===>", options);
 
   return (
     <nav className="navbar navbar-light bg-light">

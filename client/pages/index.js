@@ -17,3 +17,6 @@ LandingPage.getInitialProps = async (context) => {
 };
 
 export default LandingPage;
+
+//RQ: context is an obj with following properties:
+//pathname, asPath, query, req, res, err

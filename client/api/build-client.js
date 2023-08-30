@@ -17,3 +17,5 @@ export default ({ req }) => {
     });
   }
 };
+
+//RQ: we are using headers (to transfer cookies (sent by the client))

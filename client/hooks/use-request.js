@@ -8,9 +8,10 @@ const useRequest = ({ url, method, body, onSuccess }) => {
       setErrors(null); //Clear prev Error  
       const response = await axios[method](url, body);
       //Success case of the request  :
+      //If onSuccess callBack was provided:
       if (onSuccess) {
         //onSuccess()
-        onSuccess(response.data); //If onSuccess callBack was provided
+        onSuccess(response.data); 
       }
       return response.data;
     } catch (err) {
