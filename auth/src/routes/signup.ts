@@ -2,8 +2,7 @@ import express, { Request, Response } from "express";
 import { body } from "express-validator";
 import jwt from "jsonwebtoken";
 import { User } from "../models/user";
-import { BadRequestError } from "../errors/bad-request-errors";
-import { validateRequest } from "../middlewares/validate-request";
+import { BadRequestError, validateRequest } from "@srayen-tickets/common";
 
 const router = express.Router();
 
@@ -18,7 +17,6 @@ router.post(
   ],
   validateRequest,
   async (req: Request, res: Response) => {
-
     const { email, password } = req.body;
 
     const existingUser = await User.findOne({ email });

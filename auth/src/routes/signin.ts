@@ -1,11 +1,9 @@
 import jwt from "jsonwebtoken";
 import express, { Request, Response } from "express";
 import { body } from "express-validator";
-import { validateRequest } from "../middlewares/validate-request";
+import { validateRequest, BadRequestError } from "@srayen-tickets/common";
 import { User } from "../models/user";
-import { BadRequestError } from "../errors/bad-request-errors";
 import { Password } from "../services/password";
-
 
 const router = express.Router();
 
@@ -25,7 +23,10 @@ router.post(
     if (!existingUser) {
       throw new BadRequestError("Invalid credentials");
     }
-    const passwordsMatch =await Password.compare(existingUser.password, password);
+    const passwordsMatch = await Password.compare(
+      existingUser.password,
+      password
+    );
     if (!passwordsMatch) {
       throw new BadRequestError("Invalid Credentials");
     }
