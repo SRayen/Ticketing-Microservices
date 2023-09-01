@@ -24,3 +24,11 @@ build:
         manual:
           - src: "**/*.js"
             dest: .
+    - image: srayen/tickets
+      context: tickets
+      docker:
+        dockerfile: Dockerfile
+      sync:
+        manual:
+          - src: "**/*.js"
+            dest: .
