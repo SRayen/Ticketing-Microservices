@@ -1,6 +1,10 @@
 import mongoose from "mongoose";
 import { Password } from "../services/password";
 
+//RQ: We must create interface for record & interface for Document:
+//UserAttrs is the set of properties required to build a record => after the creation it will be turn into a document
+//That document (UserDoc) might have some additional properties placed on it automatically by mongoose, exp: createAt
+
 //interface describes props required to create a user
 interface UserAttrs {
   email: string;
@@ -31,14 +35,15 @@ const userSchema = new mongoose.Schema(
   },
 
   {
+    //manipulate the JSON representation
     toJSON: {
       transform(doc, ret) {
         ret.id = ret._id;
         delete ret._id;
         delete ret.password;
         delete ret.__v;
-      }
-    }
+      },
+    },
   }
 );
 
@@ -54,12 +59,15 @@ userSchema.pre("save", async function (done) {
 });
 
 //Add a function to a model in mongoose   (describes a single user)
+//The role of build fct here is to allow TS to do some validation
 userSchema.statics.build = (attrs: UserAttrs) => {
   return new User(attrs); //standard method + .save()
 };
-
-// UserDoc interface describes the properties that a document in the User collection will have.
-// UserModel interface describes the properties that a model in Mongoose will have.
+//User Model:
+//The UserDoc type is the type of the document that will be stored in the database.
+//The UserModel type is the type of the model object that is returned by the mongoose.model() function.
+//1er param: name of the model
+//2nd param:schema for the model
 const User = mongoose.model<UserDoc, UserModel>("User", userSchema);
 
 export { User };

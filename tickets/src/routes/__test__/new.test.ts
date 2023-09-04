@@ -1,16 +1,69 @@
 import request from "supertest"; //supertest : Allow us to fake a req to Express App
 import { app } from "../../app";
+import { Ticket } from "../../models/ticket";
 
 it("has a route handler listening to /api/tickets for post requests", async () => {
   const response = await request(app).post("/api/tickets").send({});
   console.log("==>", response.status);
-  expect(response.status).not.toEqual(404); 
+  expect(response.status).not.toEqual(404);
 });
 
-it("can only be accessed if the user is signed in", async () => {});
+it("can only be accessed if the user is signed in", async () => {
+  const response = await request(app).post("/api/tickets").send({}).expect(401);
+});
 
-it("returns an error if an invalid title is provided", async () => {});
+it("returns a status other than 401 if the user is signed in", async () => {
+  const response = await request(app)
+    .post("/api/tickets")
+    //sets the Cookie header in the request / The cookie is then sent to the server as part of the request header
+    .set("Cookie", global.signin())
+    .send({});
+  console.log("===>", response.status);
+  expect(response.status).not.toEqual(401);
+});
 
-it("returns an error if an invalid price is provided", async () => {});
+it("returns an error if an invalid title is provided", async () => {
+  await request(app)
+    .post("/api/tickets")
+    .set("Cookie", global.signin())
+    .send({ title: "", price: 10 })
+    .expect(400);
+});
 
-it("creates a ticket with valid inputs", async () => {});
+it("returns an error if an invalid title is provided", async () => {
+  await request(app)
+    .post("/api/tickets")
+    .set("Cookie", global.signin())
+    .send({ price: 10 })
+    .expect(400);
+});
+
+it("returns an error if an invalid price is provided", async () => {
+  await request(app)
+    .post("/api/tickets")
+    .set("Cookie", global.signin())
+    .send({ title: "test", price: -10 })
+    .expect(400);
+
+  await request(app)
+    .post("/api/tickets")
+    .set("Cookie", global.signin())
+    .send({ title: "test" })
+    .expect(400);
+});
+
+it("creates a ticket with valid inputs", async () => {
+  let tickets = await Ticket.find({});
+  //remember that before each test we delete all data
+  expect(tickets.length).toEqual(0);
+  await request(app)
+    .post("/api/tickets")
+    .set("Cookie", global.signin())
+    .send({ title: "test", price: 10 });
+  expect(201);
+
+  tickets = await Ticket.find({});
+  expect(tickets.length).toEqual(1);
+  expect(tickets[0].price).toEqual(10);
+  expect(tickets[0].title).toEqual("test");
+});

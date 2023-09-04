@@ -4,7 +4,12 @@ import { json } from "body-parser";
 
 import cookieSession from "cookie-session";
 
-import { errorHandler, NotFoundError } from "@srayen-tickets/common";
+import {
+  errorHandler,
+  NotFoundError,
+  currentUser,
+} from "@srayen-tickets/common";
+import { createTicketRouter } from "./routes/new";
 
 const app = express();
 app.set("trust proxy", true); //For Express to trust  the proxy of ingress-nginx
@@ -17,6 +22,9 @@ app.use(
   })
 );
 
+app.use(currentUser);
+
+app.use(createTicketRouter);
 
 app.all("*", async (req, res) => {
   throw new NotFoundError();

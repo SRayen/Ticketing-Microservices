@@ -1,6 +1,15 @@
 import { MongoMemoryServer } from "mongodb-memory-server";
 import mongoose from "mongoose";
 import { app } from "../app";
+import request from "supertest";
+
+declare global {
+  namespace NodeJS {
+    interface Global {
+      signin(): Promise<string[]>;
+    }
+  }
+}
 
 let mongo: any;
 //THIS will starts before Testing ...
@@ -27,3 +36,21 @@ afterAll(async () => {
   await mongo?.stop();
   await mongoose.connection.close();
 });
+
+global.signin = async () => {
+  const email = "test@test.com";
+  const password = "password";
+
+  const response = await request(app)
+    .post("/api/users/signup")
+    .send({
+      email,
+      password,
+    })
+    .expect(201);
+
+  // Set-Cookie header is an HTTP header that is used to send cookies from the server to the client
+  const cookie = response.get("Set-Cookie");
+
+  return cookie;
+};
