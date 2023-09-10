@@ -40,7 +40,8 @@ afterAll(async () => {
 global.signin = () => {
   //Build a JWT payload. {id,email}
   const payload = {
-    id: "123test123",
+    // id: "123test123",      Rq:in some tests we need to use 2 diff user in the same test (so we will generate a new id):
+    id:  new mongoose.Types.ObjectId().toHexString(),
     email: "test@test.com",
   };
   //Create the JWT!

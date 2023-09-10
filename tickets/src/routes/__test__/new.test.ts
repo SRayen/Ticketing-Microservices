@@ -4,7 +4,6 @@ import { Ticket } from "../../models/ticket";
 
 it("has a route handler listening to /api/tickets for post requests", async () => {
   const response = await request(app).post("/api/tickets").send({});
-  console.log("==>", response.status);
   expect(response.status).not.toEqual(404);
 });
 
@@ -18,7 +17,6 @@ it("returns a status other than 401 if the user is signed in", async () => {
     //sets the Cookie header in the request / The cookie is then sent to the server as part of the request header
     .set("Cookie", global.signin())
     .send({});
-  console.log("===>", response.status);
   expect(response.status).not.toEqual(401);
 });
 
