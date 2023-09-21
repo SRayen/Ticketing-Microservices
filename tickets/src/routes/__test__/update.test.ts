@@ -1,6 +1,8 @@
 import request from "supertest"; //supertest : Allow us to fake a req to Express App
 import { app } from "../../app";
 import mongoose from "mongoose";
+//this is the path of the reacl wrapper,& JEST is going to give us the mock file
+import { natsWrapper } from "../../nats-wrapper";
 
 it("returns a 404 if the provided id does not exist", async () => {
   const id = new mongoose.Types.ObjectId().toHexString();
@@ -68,7 +70,24 @@ it("updates the ticket provided valid inputs", async () => {
   const ticketResponse = await request(app)
     .get(`/api/tickets/${response.body.id}`)
     .send();
- 
+
   expect(ticketResponse.body.title).toEqual("test 123");
   expect(ticketResponse.body.price).toEqual(99);
+});
+
+//test publish event
+it("publishes an event", async () => {
+  const cookie = global.signin();
+  const response = await request(app)
+    .post("/api/tickets")
+    .set("Cookie", cookie)
+    .send({ title: "test", price: 20 });
+
+  await request(app)
+    .put(`/api/tickets/${response.body.id}`)
+    .set("Cookie", cookie)
+    .send({ title: "test 123", price: 99 })
+    .expect(200);
+
+  expect(natsWrapper.client.publish).toHaveBeenCalled();
 });

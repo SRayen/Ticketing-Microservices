@@ -2,6 +2,7 @@ import request from "supertest"; //supertest : Allow us to fake a req to Express
 import { app } from "../../app";
 import mongoose from "mongoose";
 
+
 it("returns a 404 if the ticket is not found", async () => {
   //remember that before each test we delete all data
   //we will generate a real Id

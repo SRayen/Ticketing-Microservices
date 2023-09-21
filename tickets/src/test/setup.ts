@@ -11,10 +11,15 @@ declare global {
   }
 }
 
+//Trick:anything tries to import that filel =>JEST will redirect it to the file inside __mock__ directory
+jest.mock("../nats-wrapper.ts");
+
 let mongo: any;
 //This will starts before Testing ...
 
 beforeAll(async () => {
+  //reset mock function 
+  jest.clearAllMocks()
   process.env.JWT_KEY = "anything"; //This line to prevent The necessity of ENV var
   const mongo = new MongoMemoryServer();
   await mongo.start(); //Start the MongoDB instance

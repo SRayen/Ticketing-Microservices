@@ -2,6 +2,8 @@ import { requireAuth, validateRequest } from "@srayen-tickets/common";
 import express, { Response, Request } from "express";
 import { body } from "express-validator";
 import { Ticket } from "../models/ticket";
+import { TicketCreatedPublisher } from "../events/publishers/ticket-created-publisher";
+import { natsWrapper } from "../nats-wrapper";
 
 const router = express.Router();
 
@@ -20,6 +22,13 @@ router.post(
     //RQ:we have forced the existence of currentUser with '!' because we have already insert the auth middleware (it will verify)
     const ticket = Ticket.build({ title, price, userId: req.currentUser!.id });
     await ticket.save();
+
+    await new TicketCreatedPublisher(natsWrapper.client).publish({
+      id: ticket.id,
+      title: ticket.title,
+      price: ticket.price,
+      userId: ticket.userId,
+    });
 
     res.status(201).send(ticket);
   }

@@ -1,6 +1,8 @@
 import request from "supertest"; //supertest : Allow us to fake a req to Express App
 import { app } from "../../app";
 import { Ticket } from "../../models/ticket";
+//this is the path of the reacl wrapper,& JEST is going to give us the mock file
+import { natsWrapper } from "../../nats-wrapper";
 
 it("has a route handler listening to /api/tickets for post requests", async () => {
   const response = await request(app).post("/api/tickets").send({});
@@ -64,4 +66,15 @@ it("creates a ticket with valid inputs", async () => {
   expect(tickets.length).toEqual(1);
   expect(tickets[0].price).toEqual(10);
   expect(tickets[0].title).toEqual("test");
+});
+
+//test publish event
+it("publishes an event", async () => {
+  await request(app)
+    .post("/api/tickets")
+    .set("Cookie", global.signin())
+    .send({ title: "test-pub ", price: 10 });
+  expect(201);
+
+  expect(natsWrapper.client.publish).toHaveBeenCalled();
 });
