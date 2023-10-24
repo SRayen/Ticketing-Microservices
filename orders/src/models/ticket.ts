@@ -1,7 +1,10 @@
 import mongoose from "mongoose";
 import { Order, OrderStatus } from "./order";
+import { updateIfCurrentPlugin } from "mongoose-update-if-current";
 
 interface TicketAttrs {
+  //we need the id when we will save a local collection of ticket in order service
+  id: string;
   title: string;
   price: number;
 }
@@ -9,6 +12,7 @@ interface TicketAttrs {
 export interface TicketDoc extends mongoose.Document {
   title: string;
   price: number;
+  version: number;
   isReserved(): Promise<boolean>;
 }
 
@@ -39,9 +43,17 @@ const ticketSchema = new mongoose.Schema(
     },
   }
 );
+
+//for versioning:
+ticketSchema.set("versionKey", "version");
+ticketSchema.plugin(updateIfCurrentPlugin);
 //Add method directly to the ticket Model itself  :
 ticketSchema.statics.build = (attrs: TicketAttrs) => {
-  return new Ticket(attrs);
+  return new Ticket({
+    _id: attrs.id,
+    title: attrs.title,
+    price: attrs.price,
+  });
 };
 
 //Add method to the Document :
@@ -58,7 +70,7 @@ ticketSchema.methods.isReserved = async function () {
       ],
     },
   });
-  return !!existingOrder; //'!!' to prevent case null (!null =>tru e)
+  return !!existingOrder; //'!!' to prevent case null (!null =>true)
 };
 
 const Ticket = mongoose.model<TicketDoc, TicketModel>("Ticket", ticketSchema);

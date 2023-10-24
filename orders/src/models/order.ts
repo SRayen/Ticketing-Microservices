@@ -1,6 +1,7 @@
 import { OrderStatus } from "@srayen-tickets/common";
 import mongoose from "mongoose";
 import { TicketDoc } from "./ticket";
+import { updateIfCurrentPlugin } from "mongoose-update-if-current";
 
 export { OrderStatus };
 
@@ -18,6 +19,7 @@ interface OrderDoc extends mongoose.Document {
   status: OrderStatus;
   expiresAt: Date;
   ticket: TicketDoc;
+  version: number;
 }
 
 interface OrderModel extends mongoose.Model<OrderDoc> {
@@ -54,6 +56,9 @@ const orderSchema = new mongoose.Schema(
     },
   }
 );
+
+orderSchema.set("versionKey", "version");
+orderSchema.plugin(updateIfCurrentPlugin);
 
 //The role of build fct here is to allow TS to do some validation
 orderSchema.statics.build = (attrs: OrderAttrs) => {

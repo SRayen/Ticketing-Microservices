@@ -1,6 +1,8 @@
 import mongoose from "mongoose";
 import { app } from "./app";
 import { natsWrapper } from "./nats-wrapper";
+import { TicketCreatedListener } from "./events/listeners/ticket-created-listener";
+import { TicketUpdatedListener } from "./events/listeners/ticket-updated-listener";
 
 const start = async () => {
   if (!process.env.JWT_KEY) {
@@ -17,11 +19,11 @@ const start = async () => {
 
   if (!process.env.NATS_URL) {
     throw new Error("NATS_URL must be defined");
-  } 
+  }
 
   if (!process.env.NATS_CLUSTER_ID) {
     throw new Error("NATS_CLUSTER_ID must be defined");
-  } 
+  }
 
   try {
     //connect to NATS (we have created a class to simulate mongoose's accessibility )
@@ -39,6 +41,9 @@ const start = async () => {
     //2 listeners:Watching for interrupt signals or terminate signals (Exp:ctrl + c in terminal)
     process.on("SIGINT", () => natsWrapper.client.close()); //Interrupt
     process.on("SIGTERM", () => natsWrapper.client.close()); //Terminate
+
+    new TicketCreatedListener(natsWrapper.client).listen();
+    new TicketUpdatedListener(natsWrapper.client).listen();
 
     await mongoose.connect(process.env.MONGO_URI);
     console.log("Connected to MongoDB");

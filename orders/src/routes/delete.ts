@@ -6,7 +6,7 @@ import {
 } from "@srayen-tickets/common";
 import express, { Request, Response } from "express";
 import { Order } from "../models/order";
-import { OrderCancelledPublisher } from "../events/publisher/order-cancelled-publisher";
+import { OrderCancelledPublisher } from "../events/publishers/order-cancelled-publisher";
 import { natsWrapper } from "../nats-wrapper";
 
 const router = express.Router();
@@ -33,6 +33,7 @@ router.delete(
     //Publish an event saying that an order was created
     new OrderCancelledPublisher(natsWrapper.client).publish({
       id: order.id,
+      version: order.version,
       ticket: {
         id: order.ticket.id,
       },

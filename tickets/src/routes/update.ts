@@ -5,6 +5,7 @@ import {
   validateRequest,
   NotFoundError,
   NotAuthorizedError,
+  BadRequestError,
 } from "@srayen-tickets/common";
 import { Ticket } from "../models/ticket";
 import { TicketUpdatedPublisher } from "../events/publishers/ticket-updated-publisher ";
@@ -29,6 +30,11 @@ router.put(
       throw new NotFoundError();
     }
 
+    //Prevent update in the case where the ticket have an orderId (Order is using this ticket)
+    if (ticket.orderId) {
+      throw new BadRequestError("Cannot edit a reserved ticket");
+    }
+
     if (ticket.userId !== req.currentUser!.id) {
       throw new NotAuthorizedError();
     }
@@ -41,6 +47,7 @@ router.put(
       title: ticket.title,
       price: ticket.price,
       userId: ticket.userId,
+      version: ticket.version,
     });
 
     res.send(ticket);
