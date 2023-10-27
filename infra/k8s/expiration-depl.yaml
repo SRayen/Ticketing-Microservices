@@ -1,0 +1,32 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: expiration-depl
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: expiration
+  template:
+    metadata:
+      labels:
+        app: expiration
+    spec:
+      containers:
+        - name: expiration
+          image: srayen/expiration
+          env:
+            # we will use the ticket's pod name as our NATS client ID (it's randomly generated & unique )
+            - name: NATS_CLIENT_ID
+              valueFrom:
+                fieldRef:
+                  fieldPath: metadata.name
+            - name: NATS_URL
+              value: "http://nats-srv:4222"
+            - name: NATS_CLUSTER_ID
+              value: ticketing
+            - name: REDIS_HOST
+              # value of the hostname for the register that we want to connect to (service name that we had written in expiration-redis-depl.yaml)
+              value: expiration-redis-srv
+---
+# This service is not going to be contacted by any other part of our application directly

@@ -1,19 +1,7 @@
-import mongoose from "mongoose";
-import { app } from "./app";
+import { OrderCreatedListener } from "./events/listeners/order-created-listener";
 import { natsWrapper } from "./nats-wrapper";
-import { TicketCreatedListener } from "./events/listeners/ticket-created-listener";
-import { TicketUpdatedListener } from "./events/listeners/ticket-updated-listener";
-import { ExpirationCompleteListener } from "./events/listeners/expiration-complete-listener";
 
 const start = async () => {
-  if (!process.env.JWT_KEY) {
-    throw new Error("JWT_KEY must be defined");
-  }
-
-  if (!process.env.MONGO_URI) {
-    throw new Error("MONGO_URI must be defined");
-  }
-
   if (!process.env.NATS_CLIENT_ID) {
     throw new Error("NATS_CLIENT_ID must be defined");
   }
@@ -43,19 +31,10 @@ const start = async () => {
     process.on("SIGINT", () => natsWrapper.client.close()); //Interrupt
     process.on("SIGTERM", () => natsWrapper.client.close()); //Terminate
 
-    new TicketCreatedListener(natsWrapper.client).listen();
-    new TicketUpdatedListener(natsWrapper.client).listen();
-    new ExpirationCompleteListener(natsWrapper.client).listen();
-
-    await mongoose.connect(process.env.MONGO_URI);
-    console.log("Connected to MongoDB");
+    new OrderCreatedListener(natsWrapper.client).listen();
   } catch (error) {
     console.error(error);
   }
-
-  app.listen(3000, () => {
-    console.log("Listening on port 3000 !!!");
-  });
 };
 
 start();

@@ -59,9 +59,9 @@ ticketSchema.statics.build = (attrs: TicketAttrs) => {
 //Add method to the Document :
 //RQ: in this case (we will us 'this') we must use function & not arrow function (prblm related to Mongooose)
 ticketSchema.methods.isReserved = async function () {
-  // 'this'==the ticket document that we just called 'isReserved' on
+  // 'this'=== the ticket document that we just called 'isReserved' on
   const existingOrder = await Order.findOne({
-    ticket: this as any,
+    ticket: this,
     status: {
       $in: [
         OrderStatus.Created,
