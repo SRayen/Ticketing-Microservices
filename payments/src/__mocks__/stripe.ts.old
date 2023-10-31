@@ -1,0 +1,9 @@
+//Remember that Env Var for our Stripe key are only accessible inside of Kubernetes Cluster 
+//But we are running our tests on local machine =>we don't have access to that env variable
+//to reach out to the real stripe API we can create another Mock around the stripe library :other stripe file : where we will export
+//a kind of Mock Object that has the same kind of API as this below (has create fct,charges prop ... )
+//This is a fake copy of Stripe and it will be imported only when we are running our code in test Environment
+
+
+/* RQ:mockResolvedValue: Whenever we call the create fct => we are going to get back a Promise (we call it with await) that automatically resolves itself with an empty obj*/
+export const stripe = { charges: { create: jest.fn().mockResolvedValue({}) } };

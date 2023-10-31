@@ -57,7 +57,7 @@ it("emit on OrderCancelled event", async () => {
 
   expect(natsWrapper.client.publish).toHaveBeenCalled();
 
-  //   console.log(natsWrapper.client.publish.mock.calls);
+    // console.log(natsWrapper.client.publish.mock.calls);
   const eventData = JSON.parse(
     (natsWrapper.client.publish as jest.Mock).mock.calls[0][1]
   );

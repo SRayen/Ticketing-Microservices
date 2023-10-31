@@ -17,6 +17,10 @@ export class ExpirationCompleteListener extends Listener<ExpirationCompleteEvent
     if (!order) {
       throw new Error("Order not found");
     }
+    //Case when we receive a cancellation event around an order that has already been paid for (status: Complete):
+    if (order.status === OrderStatus.Complete) {
+      return msg.ack();
+    }
     order.set({
       status: OrderStatus.Cancelled,
       //RQ:we don't need to reset/clear out this ticket property, isReserved() (in Ticket Model) will do the trick
