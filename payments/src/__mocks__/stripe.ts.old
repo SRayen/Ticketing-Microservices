@@ -6,4 +6,4 @@
 
 
 /* RQ:mockResolvedValue: Whenever we call the create fct => we are going to get back a Promise (we call it with await) that automatically resolves itself with an empty obj*/
-export const stripe = { charges: { create: jest.fn().mockResolvedValue({}) } };
+// export const stripe = { charges: { create: jest.fn().mockResolvedValue({}) } };
