@@ -1,19 +1,41 @@
+import Link from "next/link";
 import React from "react";
-import buildClient from "../api/build-client";
 
-const LandingPage = ({ currentUser }) => {
-  return currentUser ? (
-    <h1>You are signed in</h1>
-  ) : (
-    <h1>You are NOT signed in</h1>
+const LandingPage = ({ currentUser, tickets }) => {
+  const ticketList = tickets.map((ticket) => {
+    return (
+      <tr key={ticket.id}>
+        <td>{ticket.title}</td>
+        <td>{ticket.price}</td>
+        <td>
+          <Link href="tickets/[ticketId]" as={`/tickets/${ticket.id}`}>
+            <div>View</div>
+          </Link>
+        </td>
+      </tr>
+    );
+  });
+
+  return (
+    <div className="text-center">
+      <span class="badge bg-success m-3 w-25 h-25 fs-4">Tickets</span>
+      <table className="table table-striped">
+        <thead className="fs-2">
+          <tr>
+            <th>Title</th>
+            <th>Price</th>
+            <th>Link</th>
+          </tr>
+        </thead>
+        <tbody className="fs-3">{ticketList}</tbody>
+      </table>
+    </div>
   );
 };
 
-LandingPage.getInitialProps = async (context) => {
-  //buildClient ==> wil give us our axios instance ==>we can use :post(url[, data[, config]]) , get(url[, config]) , ...
-  const client = buildClient(context);
-  const { data } = await client.get("/api/users/currentuser");
-  return data;
+LandingPage.getInitialProps = async (context, client, currentUser) => {
+  const { data } = await client.get("/api/tickets");
+  return { tickets: data };
 };
 
 export default LandingPage;

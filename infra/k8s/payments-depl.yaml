@@ -16,7 +16,7 @@ spec:
         - name: payments
           image: srayen/payments
           env:
-            # we will use the ticket's pod name as our NATS client ID (it's randomly generated & unique )
+
             - name: NATS_CLIENT_ID
               valueFrom:
                 fieldRef:

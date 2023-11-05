@@ -22,8 +22,8 @@ const orderSchema = new mongoose.Schema(
       type: String,
       required: true,
     },
-    priceId: {
-      type: Number,
+    stripeId: {
+      type: String,
       required: true,
     },
   },
