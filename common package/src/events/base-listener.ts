@@ -9,7 +9,7 @@ interface Event {
   argument for T that is a subclass of Event) */
 //When we try to extend from this class => We should provide some custom type to this generic type (like an argument for types)
 export abstract class Listener<T extends Event> {
-  private client: Stan;
+  protected client: Stan;
   abstract subject: T["subject"]; //channel
 
   abstract queueGroupName: string;
