@@ -11,4 +11,4 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
-      - run: cd auth && npm install && npm run testhm --forceExit
+      - run: npm ci && cd auth && npm install && npm run test:ci
