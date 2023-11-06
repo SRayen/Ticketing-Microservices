@@ -14,7 +14,6 @@ jest.mock("../nats-wrapper.ts");
 //This key is from Stripe documentation (just for testing)
 process.env.STRIPE_KEY = "sk_test_51O74LkF1rJOoBdBDZkonbO6H5tJD6TRa8cL5CVj35fzMjapzXkJLb4Fy0uMpUI5xzRw4aoqS42vztWOZ8L7nQbDe00Ay7dUdy3";
 
-
 let mongo: any;
 //This will starts before Testing ...
 
