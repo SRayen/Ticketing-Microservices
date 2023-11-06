@@ -6,7 +6,7 @@
   "scripts": {
     "start": "ts-node-dev src/index.ts",
     "test": "jest --watchAll --no-cache",
-    "test:ci": "jest --detectOpenHandles"
+    "test:ci": "jest --ci"
   },
   "jest": {
     "preset": "ts-jest",
