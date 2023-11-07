@@ -88,25 +88,25 @@ Be sure to expose the ingress-nginx-controller with:
 ##  Screenshots 🏗️🔨 <a name="screenshots"></a>
 
 ### <ins>Deployments</ins>:
-![deployments](https://github.com/SRayen/Ticketing-Microservices/assets/13922445/f33b775c-3b53-422b-9ac6-5864e56cfecf)
+![deployments](https://github.com/SRayen/Ticketing-Microservices/assets/13922445/e8b5fb9e-c042-4a1b-ad27-354cd2e77792)
 
 ### <ins>SignUp</ins>:
-![SignUp](https://github.com/SRayen/Ticketing-Microservices/assets/13922445/1c72ddf3-4a4d-4c70-b497-60df1e07afb3)
+![SignUp](https://github.com/SRayen/Ticketing-Microservices/assets/13922445/24e87bba-7af6-49da-bcfd-84c78c3cdf25)
 
 ### <ins>Tickets</ins>:
-![Tickets](https://github.com/SRayen/Ticketing-Microservices/assets/13922445/2cf0b929-4ada-4347-b84d-8e6270cbec09)
+![Tickets](https://github.com/SRayen/Ticketing-Microservices/assets/13922445/3b187359-8ad3-4b51-8786-c83745abc58a)
 
 ### <ins>Purchase Ticket</ins>:
-![Purchase Ticket](https://github.com/SRayen/Ticketing-Microservices/assets/13922445/eead1db3-1dfc-462f-bf5e-7183c04fb488)
+![Purchase Ticket](https://github.com/SRayen/Ticketing-Microservices/assets/13922445/1ebc80eb-661e-429f-be4b-b4bfaa881f86)
 
 ### <ins>Orders</ins>:
-![orders](https://github.com/SRayen/Ticketing-Microservices/assets/13922445/3254127d-74c2-4370-a2bc-08329d603d63)
+![orders](https://github.com/SRayen/Ticketing-Microservices/assets/13922445/a289bd53-fc73-4ea5-b71f-5fe10bb8ae93)
 
 ### <ins>Microservices logs</ins>:
-![logs](https://github.com/SRayen/Ticketing-Microservices/assets/13922445/a07a816a-f441-4e2a-9ce9-6e79743416e3)
+![logs](https://github.com/SRayen/Ticketing-Microservices/assets/13922445/3df3fc8e-d2d5-4d58-8ec6-eddb7ff97854)
 
 ### <ins>Stripe Payments</ins>:
-![stripe_payments](https://github.com/SRayen/Ticketing-Microservices/assets/13922445/b71f7729-3b95-44f8-a745-cdf7d2f01e3b)
+![stripe_payments](https://github.com/SRayen/Ticketing-Microservices/assets/13922445/533b9e7c-ebd5-4c09-94f7-72f650dd04b5)
 
 ## Dedication
 
