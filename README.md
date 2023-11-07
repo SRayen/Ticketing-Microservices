@@ -36,6 +36,15 @@ The Ticketing App Microservices Backend is a Node.js Typescript-based **Backend*
 
 💥 The Ticketing App Microservices Backend is a reliable and efficient solution for ticket app needs. It leverages **Mongoose version numbers** to resolve **concurrency issues** between **services**.
 
+## Environment Variables 🔑
+
+ `JWT_KEY` : string, JSON web token secret <string> (Example: JwtKey)
+
+`STRIPE_KEY`: your stripe API key to handle the payment 
+
+_Note: All environment variables must be encoded in [base64 format](https://www.base64encode.org/)._
+
+
 ##  Architecture 🏗️🔨
 
 ![architecture](https://github.com/SRayen/Ticketing-Microservices/assets/13922445/0e6c6799-ba1a-4e79-837c-c1b4d6ff3164)
