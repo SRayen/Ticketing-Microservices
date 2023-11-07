@@ -33,7 +33,7 @@
 - [🔭 Up Next](#up-next)
 - [💎 Lessons Learned](#lessons-learned)
 
-## Description 🎫   <a name="Description"></a>
+## Description 🎫 <a name="Description"></a>
 
 
 The Ticketing App Microservices Backend is a Node.js Typescript-based **Backend** (a very simple Next.js front-end is made just for demonstration and testing purposes) that leverages **microservices architecture** to provide a scalable and resilient user experience. It is composed of several microservices, each with a specific responsibility, including:
