@@ -19,7 +19,7 @@
 
 ### 📑 Table of Contents
 - [📘 Description](#description)
-- [🚀 Environment Variables](#Environment-varaibles)
+- [🚀 Environment Variables](#environment-varaibles)
 
 
 ## 📘 Description <a name="description"></a>
@@ -42,7 +42,7 @@ The Ticketing App Microservices Backend is a Node.js Typescript-based **Backend*
 
 💥 The Ticketing App Microservices Backend is a reliable and efficient solution for ticket app needs. It leverages **Mongoose version numbers** to resolve **concurrency issues** between **services**.
 
-## Environment Variables 🔑  <a name="Environment-varaibles"></a>
+## Environment Variables 🔑  <a name="environment-varaibles"></a>
 
  `JWT_KEY` : string, JSON web token secret <string> (Example: JwtKey)
 
