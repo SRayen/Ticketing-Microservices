@@ -20,6 +20,7 @@
 ### 📑 Table of Contents
 - [📘 Description](#description)
 - [🚀 Environment Variables](#environment-varaibles)
+- [🏗️ Architecture](#architecture)
 
 
 ## 📘 Description <a name="description"></a>
@@ -51,7 +52,7 @@ The Ticketing App Microservices Backend is a Node.js Typescript-based **Backend*
 _Note: All environment variables must be encoded in [base64 format](https://www.base64encode.org/)._
 
 
-##  Architecture 🏗️🔨
+##  Architecture 🏗️🔨 <a name="architecture"></a>
 
 ![architecture](https://github.com/SRayen/Ticketing-Microservices/assets/13922445/0e6c6799-ba1a-4e79-837c-c1b4d6ff3164)
 
