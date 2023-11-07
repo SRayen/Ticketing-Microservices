@@ -3,7 +3,7 @@ name: tests-orders
 on:
   push:
     branches:
-      - devops
+      - devops-testing
     paths:
       - 'orders/**'
 
