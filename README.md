@@ -20,18 +20,7 @@
 ### 📑 Table of Contents
 - [📘 Description](#Description)
 - [🚀 Environment Variables](#Environment-varaibles)
-  - [Prerequisites ❗](#prerequisites)
-  - [Environment Variables :key:](#environment-variables)
-  - [Setup ⬇️](#setup)
-  - [Install :heavy_check_mark: ](#install)
-  - [Usage 🤿 🏃‍♂️](#usage)
-- [🔍 API Reference](#api-reference)
-- [🏗️🔨 Architecture](#architecture)
-- [👥 Authors](#authors)
-- [🤝 Contributing](#contributing)
-- [⭐️ Show Your Support](#show-your-support)
-- [🔭 Up Next](#up-next)
-- [💎 Lessons Learned](#lessons-learned)
+
 
 ## Description 🎫 <a name="Description"></a>
 
