@@ -83,7 +83,7 @@ Be sure to expose the ingress-nginx-controller with:
 
 ##  Architecture 🏗️🔨 <a name="architecture"></a>
 
-![architecture](https://github.com/SRayen/Ticketing-Microservices/assets/13922445/0e6c6799-ba1a-4e79-837c-c1b4d6ff3164)
+![architecture](https://github.com/SRayen/Ticketing-Microservices/assets/13922445/702adccc-3fb4-4410-acd1-957d639ef7f4)
 
 ##  Screenshots 🏗️🔨 <a name="screenshots"></a>
 
