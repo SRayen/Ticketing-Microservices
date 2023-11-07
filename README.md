@@ -21,7 +21,8 @@
 - [📘 Description](#description)
 - [🚀 Environment Variables](#environment-varaibles)
 - [🏗️ Architecture](#architecture)
-- [⭐️ Development](#development)
+- [🏗️ Development](#development)
+
 
 
 ## 📘 Description <a name="description"></a>
