@@ -75,9 +75,8 @@ Be sure to expose the ingress-nginx-controller with:
 
 Start the app with `skaffold dev`.
 
-```bash
-[Skaffold](https://www.base64encode.org/)._  handles the workflow for building, pushing and deploying your application, allowing you to focus on what matters most: writing code.
-```
+🔍 [Skaffold ](https://skaffold.dev/) handles the workflow for **building**, **pushing** and **deploying** your application, allowing you to focus on what matters most: **writing code**.
+
 
 ##  Architecture 🏗️🔨 <a name="architecture"></a>
 
