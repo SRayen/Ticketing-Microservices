@@ -73,7 +73,7 @@ Be sure to expose the ingress-nginx-controller with:
 # kubectl expose deployment ingress-nginx-contoller --target-port=80 --type=NodePort -n kube-system
 ```
 
-Start the app with `skaffold dev`.
+👉 Start the app with `skaffold dev`.
 
 🔍 [Skaffold ](https://skaffold.dev/) handles the workflow for **building**, **pushing** and **deploying** your application, allowing you to focus on what matters most: **writing code**.
 
