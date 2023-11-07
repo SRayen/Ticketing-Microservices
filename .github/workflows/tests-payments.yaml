@@ -8,6 +8,8 @@ on:
 jobs:
   build:
     runs-on: ubuntu-latest
+    env:
+      STRIPE_TESTING_KEY: ${{secrets.ACTIONS_STRIPE}}
     steps:
       - uses: actions/checkout@v2
       - run: cd payments && npm install && npm run test:ci
