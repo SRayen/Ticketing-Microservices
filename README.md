@@ -108,4 +108,11 @@ Be sure to expose the ingress-nginx-controller with:
 ### <ins>Stripe Payments</ins>:
 ![stripe_payments](https://github.com/SRayen/Ticketing-Microservices/assets/13922445/b71f7729-3b95-44f8-a745-cdf7d2f01e3b)
 
+## Dedication
+
+* 📌 I would like to express my deepest gratitude to **Stephen Grider**, the creator of the **"Microservices with Node JS and React"** course on Udemy. It is thanks to Stephen's exceptional expertise and unwavering guidance that this project came to fruition and under his tutelage.
+* 📌 This project is a testament to my growth as a developer and the invaluable lessons I have learned on this incredible learning journey. I am thrilled to share this project with you, and I hope it serves as a tribute to Stephen Grider's incredible teaching and mentorship.
+
+
+
 
