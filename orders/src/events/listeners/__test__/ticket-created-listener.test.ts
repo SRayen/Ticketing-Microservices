@@ -35,7 +35,7 @@ it("created and saves a ticket", async () => {
 
   expect(ticket).toBeDefined();
   expect(ticket?.title).toEqual(data.title);
-  expect(ticket?.price).toEqual(data.title);
+  expect(ticket?.price).toEqual(data.price);
 });
 
 it("acks the message", async () => {
