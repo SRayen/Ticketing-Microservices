@@ -17,7 +17,24 @@
 ![tests-auth](https://github.com/sRayen/Ticketing-Microservices/workflows/tests-auth/badge.svg)
 ![tests-payments](https://github.com/sRayen/Ticketing-Microservices/workflows/tests-payments/badge.svg)
 
-## Description 🎫
+### 📑 Table of Contents
+- [📘 Description](#Description)
+- [🚀 Getting Started](#getting-started)
+  - [Prerequisites ❗](#prerequisites)
+  - [Environment Variables :key:](#environment-variables)
+  - [Setup ⬇️](#setup)
+  - [Install :heavy_check_mark: ](#install)
+  - [Usage 🤿 🏃‍♂️](#usage)
+- [🔍 API Reference](#api-reference)
+- [🏗️🔨 Architecture](#architecture)
+- [👥 Authors](#authors)
+- [🤝 Contributing](#contributing)
+- [⭐️ Show Your Support](#show-your-support)
+- [🔭 Up Next](#up-next)
+- [💎 Lessons Learned](#lessons-learned)
+
+## Description 🎫   <a name="Description"></a>
+
 
 The Ticketing App Microservices Backend is a Node.js Typescript-based **Backend** (a very simple Next.js front-end is made just for demonstration and testing purposes) that leverages **microservices architecture** to provide a scalable and resilient user experience. It is composed of several microservices, each with a specific responsibility, including:
 
