@@ -54,7 +54,7 @@ The Ticketing App Microservices Backend is a Node.js Typescript-based **Backend*
 
 `STRIPE_KEY`: your stripe API key to handle the payment 
 
-_Note: All environment variables must be encoded in [base64 format](https://www.base64encode.org/)._
+_Note: All environment variables must be encoded in [base64 format](https://www.base64encode.org/)
 
 ## Development	<a name="development"></a>
 
