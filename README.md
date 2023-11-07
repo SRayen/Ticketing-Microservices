@@ -21,6 +21,7 @@
 - [📘 Description](#description)
 - [🚀 Environment Variables](#environment-varaibles)
 - [🏗️ Architecture](#architecture)
+- [⭐️ Development](#development)
 
 
 ## 📘 Description <a name="description"></a>
@@ -50,6 +51,30 @@ The Ticketing App Microservices Backend is a Node.js Typescript-based **Backend*
 `STRIPE_KEY`: your stripe API key to handle the payment 
 
 _Note: All environment variables must be encoded in [base64 format](https://www.base64encode.org/)._
+
+## Development	<a name="development"></a>
+
+To manage all the Docker containers inside the Kubernetes cluster and simplify development workflow the project uses Skaffold.
+
+To run the app in development environment, make sure Docker, Kubernetes and Skaffold are installed on your local machine.
+
+Before running the app environment variables inside the Kubernetes cluster must be set. Execute commands below to set these environment variables:
+
+```bash
+# kubectl create secret generic stripe-secret --from-literal=STRIPE_KEY=<your_stripe_key>
+
+# kubectl create secret generic jwt-secret --from-literal=JWT_KEY=<your_jwt_key>
+
+# kubectl create secret generic sendgrid-api-key --from-literal=SENDGRID_API_KEY=<your_sendgrid_key>
+```
+
+Be sure to expose the ingress-nginx-controller with:
+
+```bash
+# kubectl expose deployment ingress-nginx-contoller --target-port=80 --type=NodePort -n kube-system
+```
+
+Start the app with `skaffold dev`.
 
 
 ##  Architecture 🏗️🔨 <a name="architecture"></a>
