@@ -6,7 +6,7 @@ declare global {
   var signin: () => string[];
 }
 
-//Trick:anything tries to import that filel =>JEST will redirect it to the file inside __mock__ directory
+//Trick:anything  tries to import that filel =>JEST will redirect it to the file inside __mock__ directory
 jest.mock("../nats-wrapper.ts");
 
 let mongo: any;
