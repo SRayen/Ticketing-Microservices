@@ -31,7 +31,8 @@ The Ticketing App Microservices Backend is a Node.js Typescript-based **Backend*
 ⭐ To facilitate communication between services, the Ticket App Microservices Backend uses **NATS Streaming Server**, a lightweight messaging service built on top of NATS.
 
 🌟 The code is written in **Typescript**, which uses interfaces, classes, and generators to ensure a well-organized and maintainable codebase.
-🌟 **Kubernetes** is used to create deployments for each service and its database, as well as to build ingress and set up the NATS Streaming service.
+
+🌟 ☸ **Kubernetes** is used to create deployments for each service and its database, as well as to build ingress and set up the NATS Streaming service.
 
 💥 The Ticketing App Microservices Backend is a reliable and efficient solution for ticket app needs. It leverages **Mongoose version numbers** to resolve **concurrency issues** between **services**.
 
