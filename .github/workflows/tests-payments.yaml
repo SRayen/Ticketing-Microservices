@@ -1,9 +1,9 @@
 name: tests-payments
 
 on:
-  push:
-    branches:
-      - devops-testing
+  pull_request:
+    paths:
+      - 'payments/**'
 
 jobs:
   build:
