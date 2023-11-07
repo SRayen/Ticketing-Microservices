@@ -37,4 +37,6 @@ The Ticketing App Microservices Backend is a Node.js Typescript-based **Backend*
 
 ##  Architecture 🏗️🔨
 
+![architecture](https://github.com/SRayen/Ticketing-Microservices/assets/13922445/0e6c6799-ba1a-4e79-837c-c1b4d6ff3164)
+
 
