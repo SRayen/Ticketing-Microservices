@@ -65,8 +65,6 @@ Before running the app environment variables inside the Kubernetes cluster must 
 # kubectl create secret generic stripe-secret --from-literal=STRIPE_KEY=<your_stripe_key>
 
 # kubectl create secret generic jwt-secret --from-literal=JWT_KEY=<your_jwt_key>
-
-# kubectl create secret generic sendgrid-api-key --from-literal=SENDGRID_API_KEY=<your_sendgrid_key>
 ```
 
 Be sure to expose the ingress-nginx-controller with:
