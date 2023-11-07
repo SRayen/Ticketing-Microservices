@@ -23,7 +23,8 @@
 - [📘 Description](#description)
 - [🚀 Environment Variables](#environment-varaibles)
 - [🏗️ Architecture](#architecture)
-- [🏗️ Development](#development)
+- [⏹️ Development](#development)
+- [🎬 Screenshots](#screenshots)
 
 
 
@@ -83,5 +84,28 @@ Be sure to expose the ingress-nginx-controller with:
 ##  Architecture 🏗️🔨 <a name="architecture"></a>
 
 ![architecture](https://github.com/SRayen/Ticketing-Microservices/assets/13922445/0e6c6799-ba1a-4e79-837c-c1b4d6ff3164)
+
+##  Screenshots 🏗️🔨 <a name="screenshots"></a>
+
+### <ins>Deployments</ins>:
+![deployments](https://github.com/SRayen/Ticketing-Microservices/assets/13922445/f33b775c-3b53-422b-9ac6-5864e56cfecf)
+
+### <ins>SignUp</ins>:
+![SignUp](https://github.com/SRayen/Ticketing-Microservices/assets/13922445/1c72ddf3-4a4d-4c70-b497-60df1e07afb3)
+
+### <ins>Tickets</ins>:
+![Tickets](https://github.com/SRayen/Ticketing-Microservices/assets/13922445/2cf0b929-4ada-4347-b84d-8e6270cbec09)
+
+### <ins>Purchase Ticket</ins>:
+![Purchase Ticket](https://github.com/SRayen/Ticketing-Microservices/assets/13922445/eead1db3-1dfc-462f-bf5e-7183c04fb488)
+
+### <ins>Orders</ins>:
+![orders](https://github.com/SRayen/Ticketing-Microservices/assets/13922445/3254127d-74c2-4370-a2bc-08329d603d63)
+
+### <ins>Microservices logs</ins>:
+![logs](https://github.com/SRayen/Ticketing-Microservices/assets/13922445/a07a816a-f441-4e2a-9ce9-6e79743416e3)
+
+### <ins>Stripe Payments</ins>:
+![stripe_payments](https://github.com/SRayen/Ticketing-Microservices/assets/13922445/b71f7729-3b95-44f8-a745-cdf7d2f01e3b)
 
 
