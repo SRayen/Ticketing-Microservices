@@ -20,13 +20,17 @@
 ![tests-payments](https://github.com/sRayen/Ticketing-Microservices/workflows/tests-payments/badge.svg)
 
 ### 📑 Table of Contents
+- [📝 Introduction](#introduction)
 - [📘 Description](#description)
+- [🧩 Features](#features)
 - [🚀 Environment Variables](#environment-varaibles)
 - [🏗️ Architecture](#architecture)
 - [⏹️ Development](#development)
 - [🎬 Screenshots](#screenshots)
 
+## 📘 Introduction <a name="introduction"></a>
 
+ **This is a web application that allows users to reserve and purchase tickets to events.**
 
 ## 📘 Description <a name="description"></a>
 
@@ -47,6 +51,16 @@ The Ticketing App Microservices Backend is a Node.js Typescript-based **Backend*
 🌟 ☸ **Kubernetes** is used to create deployments for each service and its database, as well as to build ingress and set up the NATS Streaming service.
 
 💥 The Ticketing App Microservices Backend is a reliable and efficient solution for ticket app needs. It leverages **Mongoose version numbers** to resolve **concurrency issues** between **services**.
+
+## Features 🧩 <a name="features"></a>
+
+This app has the following functionalities:
+
+* ✔ Sign in/up
+* ✔ Add a ticket to the marketplace (seller)
+* ✔ Add ticket to cart (buyer) and mark it 'reserved' for 15 min
+* ✔ Make an Order
+* ✔ Checkout & pay for order
 
 ## Environment Variables 🔑  <a name="environment-varaibles"></a>
 
