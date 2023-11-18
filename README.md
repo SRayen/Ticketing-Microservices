@@ -68,8 +68,6 @@ This app has the following functionalities:
 
 `STRIPE_KEY`: your stripe API key to handle the payment 
 
-_Note: All environment variables must be encoded in [base64 format](https://www.base64encode.org/)
-
 ## Development	<a name="development"></a>
 
 To manage all the Docker containers inside the Kubernetes cluster and simplify development workflow the project uses Skaffold.
