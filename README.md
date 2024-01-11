@@ -11,7 +11,7 @@
   <code><img width="100" src="https://user-images.githubusercontent.com/25181517/117207330-263ba280-adf4-11eb-9b97-0ac5b40bc3be.png" alt="Docker" title="Docker"/></code>
 	<code><img width="100" src="https://user-images.githubusercontent.com/25181517/182534006-037f08b5-8e7b-4e5f-96b6-5d2a5558fa85.png" alt="Kubernetes" title="Kubernetes"/></code>
 
-<img src="https://camo.githubusercontent.com/628ca9bc2b443eead4b2225a02fb0b3b8e3202fcc1a9351f265f91460e8c23ef/68747470733a2f2f6e6174732e696f2f696d672f6c6f676f2e706e67" alt="Logo" data-canonical-src="https://nats.io/img/logo.png" style="max-width: 100%;">
+<img src="https://miro.medium.com/v2/resize:fit:1400/format:webp/1*ebK75QCh_mXBRx6VQjcebg.png" alt="Logo" data-canonical-src="https://nats.io/img/logo.png" style="width: 30%">
 </div>
 
 ## Status
